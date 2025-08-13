@@ -1,0 +1,36 @@
+When using the -mcmse flag in GCC for Arm Cortex-M33, several C code attributes can be associated with the Constrained Memory Storage for Exceptions (CMSE) support. These attributes help specify the behavior of code concerning secure and non-secure areas, ensuring that exception handling adheres to the security model of TrustZone.
+
+Here are some commonly used attributes related to CMSE:
+
+
+-----------------------------------------------
+__attribute__((cmse_nonsecure_entry)):
+
+This attribute is applied to a function and indicates that it can be called from non-secure code. It marks the function as a non-secure entry point, allowing secure functions to be called from non-secure applications safely.
+void secure_function(void) __attribute__((cmse_nonsecure_entry));
+
+-------------------------------
+__attribute__((cmse_secure)):
+
+This attribute indicates that a function or variable is placed in the secure memory region. It restricts access to that function or variable from the non-secure world.
+void secure_function(void) __attribute__((cmse_secure));
+
+--------------------------
+__attribute__((cmse_nonsecure)):
+
+This attribute marks functions or variables that are specifically designed for the non-secure world, ensuring they are not accessible from secure code.
+void nonsecure_function(void) __attribute__((cmse_nonsecure));
+
+----------------------------------
+__attribute__((section("secure"))):
+
+This attribute can be used to place a function or variable in a specific memory section that is designated as secure. This section typically corresponds to secure memory regions defined in the linker script.
+void secure_function(void) __attribute__((section("secure")));
+
+
+
+
+-------------------------------------
+Access Control:
+In addition to attributes, you might also define access control for structs, unions, or data elements that should be accessible differently depending on the context (secure or non-secure).
+When using these attributes, make sure your development environment and toolchain (like the linker script) support the necessary configurations to segregate secure and non-secure resources properly. Always refer to the ARM documentation and the GCC manual for specifics about these attributes and their usage in CMSE-enabled projects.

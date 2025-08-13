@@ -1,0 +1,41 @@
+Component: Arm Compiler for Embedded 6.23 Tool: armlink [5f102400]
+
+==============================================================================
+
+Memory Map of the image
+
+  Image entry point : Not specified.
+
+  Load Region LR_IROM1 (Base: 0x00010000, Size: 0x0000000c, Max: 0x00010000, ABSOLUTE)
+
+    Execution Region VECTORS (Base: 0x00010000, Size: 0x00000000, Max: 0x00001000, ABSOLUTE)
+
+    **** No section assigned to this execution region ****
+
+
+    Execution Region RESET (Base: 0x00010000, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE)
+
+    **** No section assigned to this execution region ****
+
+
+    Execution Region CODE (Base: 0x00010000, Size: 0x0000000c, Max: 0xffffffff, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x00010000   0x00000000   Code   RO            2    .text               ns_image.o
+    0x00010000   0x00000004   Code   RO            3    .text.ns_func_pointer1  ns_image.o
+    0x00010004   0x00000004   Code   RO            5    .text.ns_func_pointer2  ns_image.o
+    0x00010008   0x00000004   Code   RO            7    .text.ns_func_pointer3  ns_image.o
+
+
+    Execution Region DATA (Base: 0x20010000, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE)
+
+    **** No section assigned to this execution region ****
+
+
+    Execution Region STACK (Base: 0x20012000, Size: 0x00001000, Max: 0x00001000, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x20012000   0x00001000   Zero   RW            1    STACK.bss           anon$$obj.o
+

@@ -1,0 +1,22 @@
+LR_IROM1 0x10000000 0x00010000  {
+
+  VECTORS 0x10000000 0x1000  {  ; load region = execution region.
+    *.o (.isr_vector)
+  }
+  
+  RESET +0  {
+    *.o (.reset_handler)
+    *.o (.after_vectors)
+  }
+  
+  CODE +0  {  ; load region = execution region.
+     * (+RO)
+     * (+XO)
+  }
+  
+  DATA 0x30000000 NOCOMPRESS  {  ; RW data
+   * (+RW, +ZI)
+  }
+  
+  STACK 0x30010000 EMPTY 0x1000  {}
+}

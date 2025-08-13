@@ -1,0 +1,40 @@
+
+; secure code is placed in this secure address range
+LR_IROM1 0x10000000 0x00010000  {
+
+  VECTORS 0x10000000 0x1000  {  ; load region = execution region.
+    *.o (.isr_vector)
+  }
+  
+  RESET +0  {
+    *.o (.reset_handler)
+    *.o (.after_vectors)
+  }
+  
+  CODE +0  {  ; load region = execution region.
+     * (+RO)
+     * (+XO)
+  }
+  
+  
+  NS_DATA 0x20020000 EMPTY 0x1000  {}
+  
+  NS_STACK 0x20022000 EMPTY 0x1000  {}
+
+  DATA 0x30030000 NOCOMPRESS  {  ; RW data
+   * (+RW, +ZI)
+  }
+  
+  STACK 0x30038000 EMPTY 0x1000  {}
+}
+
+; non-secure callable region
+; veneer jump entries must be placed in non-secure callable region
+; make sure to have the address range [0x20039000:0x2003A000] is configured as non-secure callable
+LOAD_NSCR 0x20039000 0x1000
+{
+  EXEC_NSCR 0x20039000 0x1000
+  {
+    *(Veneer$$CMSE)
+  }
+}
