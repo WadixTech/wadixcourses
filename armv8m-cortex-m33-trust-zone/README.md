@@ -56,28 +56,45 @@ services from the **secure application** running in the secure state.
 
 ## ⚙️ Build & Run Instructions
 
-1.  Clone the repository and navigate to the TrustZone labs folder.\
+## Non-Secure Image Build & Load Instructions
 
-2.  Build the **secure image**:
+### 1. Build the Non-Secure Image
+This is the image that should be loaded first. (Refer to the example lab description under the `examples` directory.)
 
-    ``` bash
-    make -C secure
-    ```
+- **Clean**:
+  ```bash
+  make clean
+  ```
+- **Build**:
+  ```bash
+  make all
+  ```
+- **Download to Flash Device**:
+  ```bash
+  make download
+  ```
 
-3.  Build the **non-secure image**:
+## Secure Project Instructions
 
-    ``` bash
-    make -C non_secure
-    ```
+### 2. Clean the Main Secure Project
+Removes the `build` folder and its contents:
+```bash
+make clean
+```
 
-4.  Flash both images to the **NXP LPC55S69 board** using your preferred
-    flashing tool.\
+### 3. Build a Specific Example in the Main Secure Project
+Replace `<example_number>` with the desired example ID. Example: building `01_s`:
+```bash
+make example_number=01_s all
+```
 
-5.  Debug the binaries to step through state transitions and verify
-    `BXNS`, `BLXNS`, and `SG` instruction execution.
+### 4. Load a Specific Example into the Device
+Replace `<example_number>` with the desired example ID. Example: loading `01_s`:
+```bash
+make example_number=01_s download
+````
 
 ------------------------------------------------------------------------
-
 ## 🧩 Learning Outcomes
 
 By completing these labs, you will:\
