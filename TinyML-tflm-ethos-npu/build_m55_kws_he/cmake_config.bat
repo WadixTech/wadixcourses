@@ -1,0 +1,11 @@
+cmake -G "Eclipse CDT4 - Ninja" ^
+-DTARGET_PLATFORM=ensemble ^
+-DTARGET_SUBSYSTEM=RTSS-HE ^
+-DTARGET_BOARD=AppKit ^
+-DTARGET_REVISION=B ^
+-DCMAKE_TOOLCHAIN_FILE=scripts/cmake/toolchains/bare-metal-gcc.cmake ^
+-DGLCD_UI=OFF ^
+-DLINKER_SCRIPT_NAME=ensemble-RTSS-HE-TCM ^
+-DCMAKE_SYSTEM_ARCH=armv8.1-m.main ^
+-DCMAKE_BUILD_TYPE=Release ^
+-DLOG_LEVEL=LOG_LEVEL_DEBUG ..
