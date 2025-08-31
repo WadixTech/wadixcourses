@@ -18,6 +18,6 @@ APP Package Summary:
  - APP Package Start Address: 0x8057fc40
  - APP TOC size: 80 bytes
  - APP TOC Start Address: 0x8057ffb0
- - APP CRC32: 0xcc0bfc90
+ - APP CRC32: 0xd183d934
 
 * * * END of APP Package * * * 
