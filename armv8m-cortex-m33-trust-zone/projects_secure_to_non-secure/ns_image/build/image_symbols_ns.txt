@@ -1,4 +1,4 @@
-#<SYMDEFS># ARM Linker, 6230001: Last Updated: Thu Mar 27 04:20:35 2025
+#<SYMDEFS># ARM Linker, 6230001: Last Updated: Fri Oct 10 23:45:15 2025
 0x00010001 T ns_func_pointer1
 0x00010005 T ns_func_pointer2
 0x00010009 T ns_func_pointer3

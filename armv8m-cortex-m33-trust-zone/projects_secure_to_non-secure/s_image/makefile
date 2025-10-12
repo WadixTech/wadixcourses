@@ -56,7 +56,7 @@ CFLAGS += -Dexample_number=$(example_number)
 LDFLAGS += --no_remove
 LDFLAGS += --map --list=$(builddir)/map.txt
 LDFLAGS += --scatter $(linkerdir)/linker_code_flash_s.sct
-LDFLAGS += ./ns_image/build/image_symbols_ns.txt
+LDFLAGS += ../ns_image/build/image_symbols_ns.txt
 
 ### keil-mdk project to be used
 KEIL_PROJECT = $(builddir)/loader/lpc55s69-keil-project-flash.uvprojx
