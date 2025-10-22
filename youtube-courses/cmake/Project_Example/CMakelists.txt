@@ -1,0 +1,23 @@
+cmake_minimum_required(VERSION 3.15)
+project(MyArmApp.elf C CXX ASM)
+
+# Include custom CMake configuration files
+include(cmake/sources.cmake)
+include(cmake/headers.cmake)
+include(cmake/arm_toolchain.cmake)
+include(cmake/build_config.cmake)
+
+# Create executable for ARM Cortex-M target
+add_executable(${PROJECT_NAME}
+    ${PROJECT_SOURCES}
+    ${PROJECT_HEADERS}
+)
+
+# Optionally specify include directories
+target_include_directories(${PROJECT_NAME} PRIVATE
+    ${PROJECT_INCLUDE_DIRS}
+)
+
+# Print compiler info
+message(STATUS "Using compiler: ${CMAKE_C_COMPILER}")
+message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
