@@ -22,7 +22,7 @@ void example_01_ns(void)
   
   tmp = s_image_entry2(8);
   
-  if(1 != tmp)
+  if(2 != tmp)
   {
     while(1){
 	}
@@ -30,7 +30,7 @@ void example_01_ns(void)
   
   tmp = s_image_entry3(8);
   
-  if(1 != tmp)
+  if(3 != tmp)
   {
     while(1){
 	}

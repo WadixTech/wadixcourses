@@ -15,7 +15,7 @@
         <TargetCommonOption>
           <Device>LPC55S69JBD100:cm33_core0</Device>
           <Vendor>NXP</Vendor>
-          <PackID>NXP.LPC55S69_DFP.19.0.0</PackID>
+          <PackID>NXP.LPC55S69_DFP.25.03.00</PackID>
           <PackURL>https://mcuxpresso.nxp.com/cmsis_pack/repo/</PackURL>
           <Cpu>IRAM(0x10000000,0x09d800) IRAM2(0x20000000,0x040000) IROM(0x03000000,0x020000) IROM2(0x13000000,0x020000) XRAM(0x20040000,0x4000) XRAM2(0x30040000,0x4000) XRAM3(0x04000000,0x8000) XROM(0x00000000,0x09d800) CPUTYPE("Cortex-M33") FPU3(SFPU) DSP TZ CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -47,7 +47,7 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>..\build\</OutputDirectory>
+          <OutputDirectory>..\</OutputDirectory>
           <OutputName>s_image.elf</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
