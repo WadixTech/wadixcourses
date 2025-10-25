@@ -55,7 +55,7 @@ CFLAGS += -Dexample_number=$(example_number)
 ### C Linker flags
 LDFLAGS += --no_remove
 LDFLAGS += --map --list=$(builddir)/map.txt
-LDFLAGS += s_image\export\importlib.o
+LDFLAGS += ..\s_image\export\importlib.o
 LDFLAGS += --scatter $(linkerdir)/linker_code_flash_ns.sct
 
 ### keil-mdk project to be used
@@ -63,9 +63,8 @@ KEIL_PROJECT = $(builddir)/loader/lpc55s69-keil-project-flash.uvprojx
 
 ### headers directories
 HEADERS += -I$(incdir)
-HEADERS += -I$(incdir)
 HEADERS += -Icmsis/Include
-HEADERS += -Is_image
+HEADERS += -I..\s_image\inc
 
 create_dir = $(cygwintools)/mkdir -p $(1)
 copy-file  = $(cygwintools)/cp -r $(1) $(2)

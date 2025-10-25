@@ -20,7 +20,7 @@ loaddir  = keil-loader
 objsdir = build/objs
 linkerdir = linker
 srcdir = src
-incdir = ../inc
+incdir = ../ns_image/inc
 s_image_src = src/s_image.c
 s_image_obj = $(objsdir)/s_image.o
 s_image_elf = $(builddir)/s_image.elf
@@ -57,7 +57,7 @@ LDFLAGS += --cpu=cortex-m33
 ### headers directories
 HEADERS += -I$(incdir)
 HEADERS += -Iinc
-HEADERS += -I../cmsis/Include
+HEADERS += -I../ns_image/cmsis/Include
 
 create_dir = $(cygwintools)/mkdir -p $(1)
 copy-file  = $(cygwintools)/cp -r $(1) $(2)

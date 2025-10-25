@@ -12,15 +12,15 @@ Memory Map of the image
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x10000000   0x000000cc   Data   RO           32    .isr_vector         startup.o
+    0x10000000   0x000000cc   Data   RO           40    .isr_vector         startup.o
 
 
     Execution Region RESET (Base: 0x100000cc, Size: 0x000000b8, Max: 0xffffffff, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x100000cc   0x0000002c   Code   RO           30    .after_vectors      startup.o
-    0x100000f8   0x0000008c   Code   RO           28    .reset_handler      startup.o
+    0x100000cc   0x0000002c   Code   RO           38    .after_vectors      startup.o
+    0x100000f8   0x0000008c   Code   RO           36    .reset_handler      startup.o
 
 
     Execution Region CODE (Base: 0x10000184, Size: 0x000005b8, Max: 0xffffffff, ABSOLUTE)
@@ -78,9 +78,9 @@ Memory Map of the image
     0x10000248   0x00000006   Code   RO          156    .ARM.Collect$$rtexit$$00000004  c_wu.l(rtexit2.o)
     0x1000024e   0x00000002   PAD
     0x10000250   0x00000000   Code   RO            4    .text               s_image.o
-    0x10000250   0x00000000   Code   RO           17    .text               main.o
-    0x10000250   0x00000000   Code   RO           27    .text               startup.o
-    0x10000250   0x00000000   Code   RO           39    .text               SystemInit.o
+    0x10000250   0x00000000   Code   RO           17    .text               SystemInit.o
+    0x10000250   0x00000000   Code   RO           25    .text               main.o
+    0x10000250   0x00000000   Code   RO           35    .text               startup.o
     0x10000250   0x00000000   Code   RO           47    .text               vectors.o
     0x10000250   0x0000004a   Code   RO           84    .text               c_wu.l(sys_stackheap_outer.o)
     0x1000029a   0x00000012   Code   RO           86    .text               c_wu.l(exit.o)
@@ -94,9 +94,9 @@ Memory Map of the image
     0x100002f8   0x00000004   Code   RO           50    .text.HardFault_Handler  vectors.o
     0x100002fc   0x00000004   Code   RO           56    .text.MemoryManageFault_Handler  vectors.o
     0x10000300   0x00000004   Code   RO           48    .text.NMI_Handler   vectors.o
-    0x10000304   0x0000002c   Code   RO           40    .text.SystemInit    SystemInit.o
+    0x10000304   0x0000002c   Code   RO           18    .text.SystemInit    SystemInit.o
     0x10000330   0x00000004   Code   RO           54    .text.UsageFault_Handler  vectors.o
-    0x10000334   0x0000038a   Code   RO           18    .text.main          main.o
+    0x10000334   0x0000038a   Code   RO           26    .text.main          main.o
     0x100006be   0x00000016   Code   RO            5    .text.s_image_entry1  s_image.o
     0x100006d4   0x00000016   Code   RO            7    .text.s_image_entry2  s_image.o
     0x100006ea   0x00000016   Code   RO            9    .text.s_image_entry3  s_image.o
@@ -123,9 +123,9 @@ Memory Map of the image
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x30030000   0x00000004   Data   RW           21    .ARM.use_no_argv    main.o
+    0x30030000   0x00000004   Data   RW           29    .ARM.use_no_argv    main.o
     0x30030004   0x00000060   Zero   RW           95    .bss                c_wu.l(libspace.o)
-    0x30030064   0x00000004   Zero   RW           20    .bss.FunctionPointer  main.o
+    0x30030064   0x00000004   Zero   RW           28    .bss.FunctionPointer  main.o
 
 
     Execution Region STACK (Base: 0x30038000, Size: 0x00001000, Max: 0x00001000, ABSOLUTE)
