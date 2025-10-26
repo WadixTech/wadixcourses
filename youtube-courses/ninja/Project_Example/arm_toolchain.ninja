@@ -1,0 +1,20 @@
+#-----------------------------------------------------------
+# arm_toolchain.ninja
+# Defines ARM GCC toolchain path and command variables
+#-----------------------------------------------------------
+
+# Base toolchain directory
+toolchain_dir = C:/Alif-project/tools/armgcc-10.3.2/bin
+
+# Toolchain commands
+cc = $toolchain_dir/arm-none-eabi-gcc
+as = $toolchain_dir/arm-none-eabi-gcc
+ld = $toolchain_dir/arm-none-eabi-gcc
+objcopy = $toolchain_dir/arm-none-eabi-objcopy
+objdump = $toolchain_dir/arm-none-eabi-objdump
+
+# MCU and common flags
+cpu_flags = -mcpu=cortex-m3 -mthumb
+cflags = $cpu_flags -O2 -g -Wall -ffreestanding -I$inc_dir -MMD -MF $out.d
+asflags = $cpu_flags -x assembler-with-cpp
+ldflags = $cpu_flags -T$linker_dir/linker_script.ld -nostartfiles -Wl,--gc-sections

@@ -1,6 +1,6 @@
 #-----------------------------------------------------------
-# Basic Ninja build file for ARM Cortex-M3 (e.g. STM32)
-# Toolchain: arm-none-eabi-gcc
+# tools.ninja
+# Includes toolchain config and defines build rules + targets
 #-----------------------------------------------------------
 
 # Paths
@@ -9,18 +9,8 @@ inc_dir = inc
 linker_dir = linker
 build_dir = build
 
-# Toolchain
-cc = arm-none-eabi-gcc
-as = arm-none-eabi-gcc
-ld = arm-none-eabi-gcc
-objcopy = arm-none-eabi-objcopy
-objdump = arm-none-eabi-objdump
-
-# MCU and build options
-cpu_flags = -mcpu=cortex-m3 -mthumb
-cflags = $cpu_flags -O2 -g -Wall -ffreestanding -I$inc_dir
-asflags = $cpu_flags -x assembler-with-cpp
-ldflags = $cpu_flags -T$linker_dir/linker_script.ld -nostartfiles -Wl,--gc-sections
+# Include toolchain configuration
+include arm_toolchain.ninja
 
 # Output files
 elf = $build_dir/firmware.elf
@@ -33,6 +23,8 @@ map = $build_dir/firmware.map
 
 rule cc
   command = $cc $cflags -c $in -o $out
+  depfile = $out.d
+  deps = gcc
   description = CC $out
 
 rule as
@@ -51,10 +43,12 @@ rule objcopy
 # Build targets
 #-----------------------------------------------------------
 
+# Object files (with automatic dependency tracking)
 build $build_dir/main.o: cc $src_dir/main.c
 build $build_dir/startup.o: as $src_dir/startup.s
 
-build $elf: link $build_dir/main.o $build_dir/startup.o
+# Link step depends on header (optional explicit dependency)
+build $elf: link $build_dir/main.o $build_dir/startup.o | $inc_dir/device.h
 build $bin: objcopy $elf
 
 default $bin
