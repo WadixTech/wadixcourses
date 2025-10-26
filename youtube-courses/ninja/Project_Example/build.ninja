@@ -1,0 +1,60 @@
+#-----------------------------------------------------------
+# Basic Ninja build file for ARM Cortex-M3 (e.g. STM32)
+# Toolchain: arm-none-eabi-gcc
+#-----------------------------------------------------------
+
+# Paths
+src_dir = src
+inc_dir = inc
+linker_dir = linker
+build_dir = build
+
+# Toolchain
+cc = arm-none-eabi-gcc
+as = arm-none-eabi-gcc
+ld = arm-none-eabi-gcc
+objcopy = arm-none-eabi-objcopy
+objdump = arm-none-eabi-objdump
+
+# MCU and build options
+cpu_flags = -mcpu=cortex-m3 -mthumb
+cflags = $cpu_flags -O2 -g -Wall -ffreestanding -I$inc_dir
+asflags = $cpu_flags -x assembler-with-cpp
+ldflags = $cpu_flags -T$linker_dir/linker_script.ld -nostartfiles -Wl,--gc-sections
+
+# Output files
+elf = $build_dir/firmware.elf
+bin = $build_dir/firmware.bin
+map = $build_dir/firmware.map
+
+#-----------------------------------------------------------
+# Build rules
+#-----------------------------------------------------------
+
+rule cc
+  command = $cc $cflags -c $in -o $out
+  description = CC $out
+
+rule as
+  command = $as $asflags -c $in -o $out
+  description = AS $out
+
+rule link
+  command = $ld $ldflags -Wl,-Map=$map -o $out $in
+  description = LD $out
+
+rule objcopy
+  command = $objcopy -O binary $in $out
+  description = OBJCOPY $out
+
+#-----------------------------------------------------------
+# Build targets
+#-----------------------------------------------------------
+
+build $build_dir/main.o: cc $src_dir/main.c
+build $build_dir/startup.o: as $src_dir/startup.s
+
+build $elf: link $build_dir/main.o $build_dir/startup.o
+build $bin: objcopy $elf
+
+default $bin
