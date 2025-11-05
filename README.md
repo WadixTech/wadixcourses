@@ -79,6 +79,20 @@ This repository hosts the **labs, examples, and demo projects** used in Wadix Te
 
 ---
 
+### 6. Youtube Courses
+- A **set of examples and projects** targeting **build tools and build systems**.  
+- Build Tools & Systems:
+  - cmake build system generator
+  - make build tool & makefile syntax
+  - ninja build tool & ninja build syntax
+
+📂 Content:  
+- cmake example project
+- make & makefile example project 
+- ninja example project
+  
+---
+
 ## 🚀 Getting Started  
 
 Clone the repository:  
