@@ -3,12 +3,14 @@
 #include <helper.h>
 #include <core_cm3.h>
 
-void example_03(void)
-{
 
-    __WFI();
-	__WFI();
-	
-	while(1){
-	}
+int Var = 10;
+const int* const Ptr = NULL;
+
+void example_03(void)
+{	
+  Ptr = &Var;
+  //*Ptr = 3;
+  while(1){
+  }
 }

@@ -4,25 +4,16 @@
 #include <core_cm3.h>
 
 
-// overwrite default WDT interrupt handler
-void SysTick_Handler(void){
-  while(1){
-  }
-}
+
+int Var_0 = 10;
+int Var_1 = 20;
+int* const Ptr_0 = &Var_0;
+int* const Ptr_1 = &Var_1;
 
 void example_02(void)
 {
-  volatile int j = 0;
-  // set systick reload register
-  SysTick->LOAD = 0xFFFFFF;
-  // reset systick counter register
-  SysTick->VAL   = 0UL;
-  
-  // Enable SysTick IRQ and SysTick Timer
-  SysTick->CTRL  = SysTick_CTRL_CLKSOURCE_Msk |
-                   SysTick_CTRL_TICKINT_Msk   |
-                   SysTick_CTRL_ENABLE_Msk;  
-				   
-	while(1){
-	}
+  *Ptr_0 = 10;
+  //Ptr_0 = Ptr_1;
+  while(1){
+  }
 }

@@ -68,7 +68,7 @@ SECTIONS
        _edata = . ;
        PROVIDE(__end_data_RAM = .) ;
        PROVIDE(__end_data_RamLoc32 = .) ;
-    } > RamLoc32 AT>MFlash128
+    } > RAM AT>MFlash128
 
     /* MAIN BSS SECTION */
     .bss : ALIGN(4)
@@ -82,7 +82,7 @@ SECTIONS
         PROVIDE(__end_bss_RAM = .) ;
         PROVIDE(__end_bss_RamLoc32 = .) ;
         PROVIDE(end = .);
-    } > RamLoc32 AT> RamLoc32
+    } > RAM AT> RAM
 
     PROVIDE(_pvHeapStart = DEFINED(__user_heap_base) ? __user_heap_base : .);
     PROVIDE(_vStackTop = DEFINED(__user_stack_top) ? __user_stack_top : __top_RamLoc32 - 0);

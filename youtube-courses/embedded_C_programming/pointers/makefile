@@ -52,7 +52,7 @@ CFLAGS += -Dexample_number=$(example_number)
 ### C Linker flags
 LDFLAGS += -Xlinker -static
 LDFLAGS += -nostartfiles
-LDFLAGS += -Wl,--map=$(builddir)/map.txt
+LDFLAGS += -Wl,-Map=$(builddir)/map.txt
 
 MEMORY_CONFIG ?= FLASH
 
