@@ -8,7 +8,7 @@ static uint32_t variable;
 
 void add_fnc(uint32_t incr)
 {
-  varilable += incr;
+  variable += incr;
 }
 
 void example_00(void)

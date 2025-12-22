@@ -3,10 +3,13 @@
 #include <helper.h>
 #include <core_cm4.h>
 
+uint32_t debug_variable = 0;
+
 void add_fnc(uint32_t incr)
 {
   static uint32_t variable;
-  varilable += incr;
+  variable += incr;
+  debug_variable = variable;
 }
 
 void example_01(void)
