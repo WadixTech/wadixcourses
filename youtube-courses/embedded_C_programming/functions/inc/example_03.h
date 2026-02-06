@@ -1,5 +1,10 @@
 #include <stdio.h>
 #include <stdint.h>
 
-// function declaration, embed already the function signature
-uint32_t add(in*t a,int* b);
+
+static inline uint32_t add(int a,int b)
+{
+  volatile uint32_t res = 0;
+  res = a + b;
+  return res;
+}

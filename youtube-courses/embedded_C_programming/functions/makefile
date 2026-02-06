@@ -10,7 +10,9 @@ CC = $(toolsdir)/armgcc/bin/arm-none-eabi-gcc.exe
 LD = $(toolsdir)/armgcc/bin/arm-none-eabi-gcc.exe
 AS = $(toolsdir)/armgcc/bin/arm-none-eabi-gcc.exe
 OBJDUMP = $(toolsdir)/armgcc/bin/arm-none-eabi-objdump.exe
-OBJDUMPFLAGS = -d
+NM = $(toolsdir)/armgcc/bin/arm-none-eabi-nm.exe
+OBJDUMPFLAGS = -D
+NMFLAGS =
 
 ### default example number
 example_number ?= 
@@ -26,6 +28,7 @@ example_src = examples/example_$(example_number).c
 example_obj = $(objsdir)/example_$(example_number).o
 example_elf = $(builddir)/example_$(example_number).elf
 example_disasm = $(builddir)/example_$(example_number).disasm
+example_symbols = $(builddir)/example_$(example_number).symbols
 
 ### C sources
 C_SOURCES   := $(wildcard $(srcdir)/*.c)
@@ -46,6 +49,7 @@ CFLAGS += -mfloat-abi=soft
 CFLAGS += -ggdb
 CFLAGS += -gdwarf-3
 CFLAGS += -std=c99
+CFLAGS += -O2
 ### add example number macro , required by header file to declare corresponding example function
 CFLAGS += -Dexample_number=$(example_number)
 
@@ -74,10 +78,11 @@ create_dir = $(cygwintools)/mkdir -p $(1)
 copy-file  = $(cygwintools)/cp -r $(1) $(2)
 
 ### makefile main recipe
-all: $(example_disasm)
+all: $(example_symbols)
 
-$(example_disasm): $(example_elf)
-	$(OBJDUMP) $(OBJDUMPFLAGS) $(<) > $(@)
+$(example_symbols): $(example_elf)
+	$(NM) $(NMFLAGS) $(<) > $(@)
+	$(OBJDUMP) $(OBJDUMPFLAGS) $(<) > $(example_disasm)
 	$(call copy-file,$(loaddir)/$(MEMORY_CONFIG),$(builddir)/loader)
 	$(cygwintools)/sed -i 's/example_xx.elf/example_$(example_number).elf/g' $(KEIL_PROJECT)
 

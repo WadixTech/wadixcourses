@@ -15,8 +15,9 @@ uint32_t add(int* a,int* b)
 uint32_t result_add = 0;
 void example_01(void)
 {
-  
-  result_add = add(10,20);
+  int in_0 = 10;
+  int in_1 = 10;
+  result_add = add(&in_0,&in_1);
   
   while(1){
   }

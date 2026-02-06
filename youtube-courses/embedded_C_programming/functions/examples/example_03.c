@@ -4,14 +4,7 @@
 #include <example_03.h>
 #include <core_cm4.h>
 
-inline uint32_t add(int a,int b)
-{
-  volatile uint32_t res = 0;
-  res = *a + *b;
-  return res;
-}
 
-  
 uint32_t result_add = 0;
 void example_03(void)
 {

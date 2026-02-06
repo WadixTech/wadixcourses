@@ -6,7 +6,7 @@
 static uint32_t add(int a,int b)
 {
   volatile uint32_t res = 0;
-  res = *a + *b;
+  res = a + b;
   return res;
 }
 
