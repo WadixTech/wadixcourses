@@ -9,7 +9,8 @@ uint32_t result_add = 0;
 void example_03(void)
 {
   
-  result_add = add(10,20);
+  int addr = &add;
+  result_add = add(addr,20);
   
   while(1){
   }

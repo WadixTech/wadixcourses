@@ -3,7 +3,7 @@
 #include <helper.h>
 #include <core_cm4.h>
 
-static uint32_t add(int a,int b)
+uint32_t add(int a,int b)
 {
   volatile uint32_t res = 0;
   res = a + b;
